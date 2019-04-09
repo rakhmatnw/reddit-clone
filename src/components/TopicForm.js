@@ -54,10 +54,10 @@ class TopicForm extends Component {
               />
             {/* I used react-bootstrap layout grid with Row & Col */}
             <Row>
-              <Col md={3}>
+              <Col md={5}>
                 <span>{this.state.content.length} / 255</span>
               </Col>
-              <Col md={{ span: 3, offset: 6}}>
+              <Col md={{ span: 5, offset: 2}}>
                 <Button 
                 variant="primary" 
                 block
