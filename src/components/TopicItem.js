@@ -2,9 +2,9 @@ import React from 'react';
 import {ListGroup, ButtonGroup, Button} from 'react-bootstrap';
 import {FaArrowUp, FaArrowDown} from 'react-icons/fa';
 import {connect} from 'react-redux';
-import {upvoteTopic} from './../actions/topicsAction';
+import {upvoteTopic, downvoteTopic} from './../actions/topicsAction';
 
-const TopicItem = ({id, index, content, upvote, downvote, upvoteTopic, topics}) => {
+const TopicItem = ({id, index, content, upvote, downvote, upvoteTopic, downvoteTopic, topics}) => {
   return(
     <ListGroup.Item
       style={{
@@ -19,7 +19,9 @@ const TopicItem = ({id, index, content, upvote, downvote, upvoteTopic, topics}) 
           <FaArrowUp />
           {upvote}
         </Button>
-        <Button variant="outline-danger">
+        <Button 
+          variant="outline-danger"
+          onClick={() => downvoteTopic(id, topics)}>
           {downvote}
           <FaArrowDown />
         </Button>
@@ -37,7 +39,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    upvoteTopic: (id, topics) => {dispatch(upvoteTopic(id, topics))} 
+    upvoteTopic: (id, topics) => {dispatch(upvoteTopic(id, topics))},
+    downvoteTopic: (id, topics) => {dispatch(downvoteTopic(id, topics))}
   }
 }
 
