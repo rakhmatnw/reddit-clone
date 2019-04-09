@@ -14,6 +14,16 @@ export const addTopic = (content, currentTopics) => {
 
   return {
     type: 'ADD_TOPICS',
-    payload: payload
+    payload
+  }
+}
+
+export const upvoteTopic = (id, currentTopics) => {
+  const topicIndex = currentTopics.findIndex(topic => topic.id == id);
+  currentTopics[topicIndex].upvote += 1;
+
+  return {
+    type: 'UPVOTE_TOPIC',
+    payload: currentTopics
   }
 }
