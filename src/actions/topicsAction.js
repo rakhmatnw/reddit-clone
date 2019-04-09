@@ -27,3 +27,13 @@ export const upvoteTopic = (id, currentTopics) => {
     payload: currentTopics
   }
 }
+
+export const downvoteTopic = (id, currentTopics) => {
+  const topicIndex = currentTopics.findIndex(topic => topic.id == id);
+  currentTopics[topicIndex].downvote += 1;
+
+  return {
+    type: 'DOWNVOTE_TOPIC',
+    payload: currentTopics
+  }
+}
