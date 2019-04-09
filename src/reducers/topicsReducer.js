@@ -28,9 +28,8 @@ export const topicsReducer = (state = initState, action) => {
     }
   }
 
-  if(action.type === 'UPVOTE_TOPIC'){
+  if(action.type === 'UPVOTE_TOPIC' || action.type === 'DOWNVOTE_TOPIC'){
     return {
-      ...state,
       topics: [...action.payload]
     }
   }
