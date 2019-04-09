@@ -1,8 +1,10 @@
 import React from 'react';
 import {ListGroup, ButtonGroup, Button} from 'react-bootstrap';
 import {FaArrowUp, FaArrowDown} from 'react-icons/fa';
+import {connect} from 'react-redux';
+import {upvoteTopic} from './../actions/topicsAction';
 
-const TopicItem = ({index, content, upvote, downvote}) => {
+const TopicItem = ({id, index, content, upvote, downvote, upvoteTopic, topics}) => {
   return(
     <ListGroup.Item
       style={{
@@ -11,7 +13,9 @@ const TopicItem = ({index, content, upvote, downvote}) => {
       }}>
       <h2>{index}</h2>
       <ButtonGroup vertical className="mx-2">
-        <Button variant="outline-success">
+        <Button 
+          variant="outline-success"
+          onClick={() => upvoteTopic(id, topics)}>
           <FaArrowUp />
           {upvote}
         </Button>
@@ -25,4 +29,16 @@ const TopicItem = ({index, content, upvote, downvote}) => {
   )
 }
 
-export default TopicItem
+const mapStateToProps = store => {
+  return {
+    topics: store.topics
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    upvoteTopic: (id, topics) => {dispatch(upvoteTopic(id, topics))} 
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopicItem)
