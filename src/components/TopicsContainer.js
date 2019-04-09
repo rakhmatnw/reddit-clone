@@ -28,11 +28,20 @@ class TopicsContainer extends Component {
       )
     })
 
-    return(
-      <ListGroup>
-        {TopicList}
-      </ListGroup>
-    )
+    if(this.props.topics.length > 0){
+      return(
+        <ListGroup>
+          {TopicList}
+        </ListGroup>
+        )
+    }else{
+      return(
+        <div>
+          no post yet.
+        </div>
+      )
+    }
+
   }
 }
 
