@@ -7,6 +7,8 @@ import {
   Col,
   Modal
 } from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {addTopic} from './../actions/topicsAction.js';
 
 class TopicForm extends Component {
   state = {
@@ -15,24 +17,24 @@ class TopicForm extends Component {
   }
 
   handleChange = e => {
+    // Set the value of content in state from the form
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
   handleSubmit = e => {
+    // prevent button to refresh the page on submit
     e.preventDefault();
-    if(this.state.content.length > 255){
-      this.setState({
-        modalShown: true
-      })
-    }
+    // if content length is more than 255, it will not submit, instead modal will be shown
+    this.state.content.length > 255 ?
+      this.setState({modalShown: true}) :
+      this.props.addTopic(this.state.content, this.props.topics)
   }
 
   handleModalToggle = () => {
-    this.setState({
-      modalShown: false
-    })
+    // modal will disappear
+    this.setState({modalShown: false})
   }
 
   render(){
@@ -72,8 +74,7 @@ class TopicForm extends Component {
         {/* Modal will shown when user submit a post but the character length is more than 255 character */}
         <Modal 
           show={this.state.modalShown} 
-          onHide={this.handleModalToggle}
-          >
+          onHide={this.handleModalToggle}>
           <Modal.Body>
             The number of Topic characters cannot be more than 255 character!
           </Modal.Body>
@@ -90,4 +91,16 @@ class TopicForm extends Component {
   }
 }
 
-export default TopicForm;
+const mapStateToProps = store => {
+  return {
+    topics: store.topics
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addTopic: (content, currentTopics) => {dispatch(addTopic(content, currentTopics))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopicForm);
