@@ -22,5 +22,11 @@ export const topicsReducer = (state = initState, action) => {
     }  
   }
 
+  if(action.type === 'ADD_TOPICS'){
+    return {
+      topics: [...state.topics, action.payload]
+    }
+  }
+
   return state
 }
