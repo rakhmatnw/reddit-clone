@@ -11,7 +11,12 @@ class TopicsContainer extends Component {
   }
 
   render(){
-    const TopicList = this.props.topics.map((topic,i) => {
+    // sort the topics based on upvote, descending 
+    this.props.topics.sort((a,b) => b.upvote-a.upvote);
+    // slice the first 20 topics and then map the topics data to a TopicItem Component
+    const TopicList = this.props.topics
+      .slice(0, 20)
+      .map((topic,i) => {
       return(
         <TopicItem 
           key={topic.id}
