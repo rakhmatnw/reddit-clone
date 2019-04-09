@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Helmet} from 'react-helmet';
+import {Container, Row, Col} from 'react-bootstrap';
+import TopicForm from './components/TopicForm';
+import TopicsContainer from './components/TopicsContainer';
 
 class App extends Component {
   render() {
@@ -17,6 +20,13 @@ class App extends Component {
           />
         </Helmet>
 
+        <Container fluid>
+          <h1>Reddit Clone</h1>
+          <Row>
+            <Col md={4}><TopicForm/></Col>
+            <Col md={8}><TopicsContainer/></Col>
+          </Row>
+        </Container>
       </div>
     );
   }
