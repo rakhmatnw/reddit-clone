@@ -46,13 +46,15 @@ class TopicForm extends Component {
   }
 
   render(){
+    // maximum length of character for "topic"
+    const maxLength = 255;
     // destructure 'content' from state
     let {content} = this.state;
-    
+
     return(
       <div>
         {/* I used Alert to wrap the form and give it background color of 'info' from Bootstrap color pallete styling and will turn to 'danger' if content character length is more than 255  */}
-        <Alert variant={content.length <= 255 ? "info" : "danger"}>
+        <Alert variant={content.length <= maxLength ? "info" : "danger"}>
           <Form>
             {/* Form.Control from React-Bootstrap */}
             <Form.Control 
@@ -67,11 +69,12 @@ class TopicForm extends Component {
             <Row>
               <Col md={5}>
                 {/* displayed the amount of "Topic" character users typed in the form */}
-                <span>{this.state.content.length} / 255</span>
+                <span>{this.state.content.length} / {maxLength}</span>
               </Col>
               <Col md={{ span: 5, offset: 2}}>
                 <Button 
                 variant="primary" 
+                disabled={content.length > maxLength ? true : false} // disabled the button if the character length is more than 255
                 block
                 onClick={this.handleSubmit} // invoke a funtion on click
                 >
@@ -87,7 +90,7 @@ class TopicForm extends Component {
           show={this.state.modalShown} 
           onHide={this.handleModalToggle}>
           <Modal.Body>
-            The number of Topic characters cannot be more than 255 character!
+            The number of Topic characters cannot be more than {maxLength} character!
           </Modal.Body>
           <Modal.Footer>
             <Button 
