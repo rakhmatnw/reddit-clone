@@ -12,7 +12,7 @@ export const topicsReducer = (state = initState, action) => {
     }  
   }
 
-  if(action.type === 'ADD_TOPICS'){
+  if(action.type === 'ADD_TOPIC'){
     return {
       // clone the current state that contains current topic
       // and added new topic inside dispatced action payload
