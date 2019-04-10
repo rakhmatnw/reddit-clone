@@ -6,14 +6,17 @@ import {getTopics} from './../actions/topicsAction';
 
 class TopicsContainer extends Component {
 
+  // when component already mounted invoke getTopics to dispatch action
   componentDidMount(){
+    // this function will check if there is already a data in memory
     this.props.getTopics();
   }
 
   render(){
     // sort the topics based on upvote, descending 
     this.props.topics.sort((a,b) => b.upvote-a.upvote);
-    // slice the first 20 topics and then map the topics data to a TopicItem Component
+    // slice the top 20 topics
+    // then map the topics data to a TopicItem Component
     const TopicList = this.props.topics
       .slice(0, 20)
       .map((topic,i) => {
@@ -28,6 +31,7 @@ class TopicsContainer extends Component {
       )
     })
 
+    // conditional rendering if the topics is empty
     if(this.props.topics.length > 0){
       return(
         <ListGroup>

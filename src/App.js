@@ -8,10 +8,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* Using React Helmet to edit html head tag */}
+        {/* React Helmet to edit html head tag */}
         <Helmet>
+          {/* Change html head title */}
           <title>Reddit Clone</title>
-          {/* cdn for react-bootstrap styling */}
+          {/* CDN for react-bootstrap styling */}
           <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,8 +21,10 @@ class App extends Component {
           />
         </Helmet>
 
+        {/* Container component from react-bootstrap */}
         <Container fluid>
           <h1>Reddit Clone</h1>
+          {/* Row & Col component from react-bootstrap grid */}
           <Row>
             <Col md={4}><TopicForm/></Col>
             <Col md={8}><TopicsContainer/></Col>

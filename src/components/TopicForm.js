@@ -26,9 +26,13 @@ class TopicForm extends Component {
   handleSubmit = e => {
     // prevent button to refresh the page on submit
     e.preventDefault();
-    // if content length is more than 255, it will not submit, instead modal will be shown
+    // check if "topic" character is more than 255
     this.state.content.length > 255 ?
+      // if it's true then show the alert modal
       this.setState({modalShown: true}) :
+      // if it's false then invoke addTopic to dispatch an action
+      // first parameter is content from state as new topic
+      // second parameter is current topics array from redux store
       this.props.addTopic(this.state.content, this.props.topics)
   }
 
@@ -46,24 +50,26 @@ class TopicForm extends Component {
         {/* I used Alert to wrap the form and give it background color of 'info' from Bootstrap color pallete styling and will turn to 'danger' if content character length is more than 255  */}
         <Alert variant={content.length <= 255 ? "info" : "danger"}>
           <Form>
-            {/* Form.Control is a component from React-Bootstrap */}
+            {/* Form.Control from React-Bootstrap */}
             <Form.Control 
               name="content"
               as="textarea" 
               rows="3" 
-              style={{marginBottom: '10px'}}
-              onChange={this.handleChange}
+              style={{marginBottom: '10px'}} // additional styling
+              onChange={this.handleChange} // invoke a function on Change
               />
-            {/* I used react-bootstrap layout grid with Row & Col */}
+            {/* Row & Col component from react-bootstrap grid */}
             <Row>
               <Col md={5}>
+                {/* displayed the amount of "Topic" character users typed in the form */}
                 <span>{this.state.content.length} / 255</span>
               </Col>
               <Col md={{ span: 5, offset: 2}}>
                 <Button 
                 variant="primary" 
                 block
-                onClick={this.handleSubmit}> 
+                onClick={this.handleSubmit} // invoke a funtion on click
+                >
                   Post 
                 </Button>
               </Col>
@@ -71,7 +77,7 @@ class TopicForm extends Component {
           </Form>
         </Alert>
 
-        {/* Modal will shown when user submit a post but the character length is more than 255 character */}
+        {/* Modal component from react-bootstrap */}
         <Modal 
           show={this.state.modalShown} 
           onHide={this.handleModalToggle}>
