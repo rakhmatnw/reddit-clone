@@ -1,15 +1,25 @@
 # Reddit Clone
 A simple clone of Reddit functionality which allow user to contribute topics and upvote or downvote the topic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+This project was built with [Create React App](https://github.com/facebook/create-react-app) boilerplate
+
+## Installation
+This project requires [Node.js](https://nodejs.org/) to run
+```
+$ git clone https://github.com/rakhmatnw/reddit-clone.git
+$ cd reddit-clone
+$ npm install or yarn install
+$ npm start or yarn start
+```
 
 ## Stack
-This repo uses several library:
-* React.js
-* Redux.js
-* React-Bootstrap
-* React-Icons
-* React-Helmet
+This project uses several libraries:
+* [React.js](https://reactjs.org/)
+* [Redux.js](https://redux.js.org/)
+* [React-Redux](https://react-redux.js.org/)
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [React-Icons](https://react-icons.netlify.com/#/)
+* [React-Helmet](https://github.com/nfl/react-helmet)
 
 ## Features
 * User can add topic (max character is 255)
