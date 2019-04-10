@@ -5,7 +5,7 @@ const initState = {
 export const topicsReducer = (state = initState, action) => {
   if(action.type === 'GET_TOPICS'){
     return {
-      topics: state.topics
+      topics: action.payload
     }  
   }
 
