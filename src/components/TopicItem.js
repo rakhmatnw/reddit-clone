@@ -16,13 +16,13 @@ const TopicItem = ({id, index, content, upvote, downvote, upvoteTopic, downvoteT
         <Button 
           variant="outline-success"
           onClick={() => upvoteTopic(id, topics)}>
-          <FaArrowUp /><br/>
-          {upvote}
+          <FaArrowUp />
+          <div>{upvote}</div>
         </Button>
         <Button 
           variant="outline-danger"
           onClick={() => downvoteTopic(id, topics)}>
-          {downvote}<br/>
+          <div>{downvote}</div>
           <FaArrowDown />
         </Button>
       </ButtonGroup>
