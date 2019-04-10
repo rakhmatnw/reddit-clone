@@ -27,13 +27,17 @@ class TopicForm extends Component {
     // prevent button to refresh the page on submit
     e.preventDefault();
     // check if "topic" character is more than 255
-    this.state.content.length > 255 ?
+    if(this.state.content.length > 255){
       // if it's true then show the alert modal
-      this.setState({modalShown: true}) :
+      this.setState({modalShown: true})
+    }else{
       // if it's false then invoke addTopic to dispatch an action
       // first parameter is content from state as new topic
       // second parameter is current topics array from redux store
       this.props.addTopic(this.state.content, this.props.topics)
+      // change the content state into empty to make textArea form become empty on submit
+      this.setState({content: ''})
+    }
   }
 
   handleModalToggle = () => {
@@ -55,6 +59,7 @@ class TopicForm extends Component {
               name="content"
               as="textarea" 
               rows="3" 
+              value={this.state.content} // subscribe to the value from state
               style={{marginBottom: '10px'}} // additional styling
               onChange={this.handleChange} // invoke a function on Change
               />
