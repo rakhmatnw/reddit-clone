@@ -28,40 +28,56 @@ describe('Topics Actions', () => {
     expect(actualAction).toEqual(expectedAction);
   });
 
-  it('should create an UPVOTE_TOPIC action', () => {
+  it('should add 1 to selected topic upvote and create an UPVOTE_TOPIC action', () => {
+    const currentTopic = [
+      {
+        id: 1,
+        content: 'Hay!',
+        upvote: 0,
+        downvote: 0
+      }
+    ]
+
     const id = 1;
+ 
+    const upvotedTopic = [
+      {
+        id: 1,
+        content: 'Hay!',
+        upvote: 1,
+        downvote: 0
+      }
+    ]
 
-    const upvotedTopic = {
-      id: 1,
-      content: 'Hello! this is a topic',
-      upvote: 1,
-      downvote: 0
-    }
-
-    const topics = [];
-    topics.push(upvotedTopic);
-
-    const expectedAction = {type: 'UPVOTE_TOPIC', payload: topics};
-    const actualAction = actions.upvoteTopic(id, topics);
+    const expectedAction = {type: 'UPVOTE_TOPIC', payload: upvotedTopic};
+    const actualAction = actions.upvoteTopic(id, currentTopic);
 
     expect(actualAction).toEqual(expectedAction);
   });
 
-  it('should create an DOWNVOTE_TOPIC action', () => {
+  it('should add 1 to selected topic downvote and create an DOWNVOTE_TOPIC action', () => {
+    const currentTopic = [
+      {
+        id: 1,
+        content: 'Hay!',
+        upvote: 0,
+        downvote: 0
+      }
+    ]
+
     const id = 1;
+ 
+    const downvotedTopic = [
+      {
+        id: 1,
+        content: 'Hay!',
+        upvote: 0,
+        downvote: 1
+      }
+    ]
 
-    const downvotedTopic = {
-      id: 1,
-      content: 'Hello! this is a topic',
-      upvote: 0,
-      downvote: 1
-    }
-
-    const topics = [];
-    topics.push(downvotedTopic);
-
-    const expectedAction = {type: 'DOWNVOTE_TOPIC', payload: topics};
-    const actualAction = actions.downvoteTopic(id, topics);
+    const expectedAction = {type: 'DOWNVOTE_TOPIC', payload: downvotedTopic};
+    const actualAction = actions.downvoteTopic(id, currentTopic);
 
     expect(actualAction).toEqual(expectedAction);
   });
