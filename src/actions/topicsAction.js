@@ -29,7 +29,7 @@ export const addTopic = (content, currentTopics) => {
 
   // pass the object as a payload to be stored in reducer
   return {
-    type: 'ADD_TOPICS',
+    type: 'ADD_TOPIC',
     payload
   }
 }
