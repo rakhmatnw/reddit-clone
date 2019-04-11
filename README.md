@@ -1,5 +1,7 @@
 # Reddit Clone
-A simple clone of Reddit functionality which allow user to contribute topics and upvote or downvote the topic
+A simple clone of Reddit functionality which allow user to contribute topics and upvote or downvote the topic.
+
+Click [here](https://protected-dusk-76416.herokuapp.com/) to see the demo.
 
 This project was built with [Create React App](https://github.com/facebook/create-react-app) boilerplate
 
